@@ -1,0 +1,18 @@
+<%- include("./partials/head") %> 
+<%- include("./partials/header") %>
+<main id="user-edit">
+  <h1>Editar usuário usuário</h1>
+  <% if(locals.error){ %>
+  <h2 class="error-alert"><%= error.message %></h2>
+  <% } %>
+
+  <form action="/user/<%=user.id%>?_method=put" method="post">
+    <input type="text" name="nome" placeholder="Nome" value="<%= user.nome %>"/>
+    <input type="text" name="sobrenome" placeholder="Sobrenome" value="<%= user.sobrenome %>"/>
+    <input type="email" name="email" placeholder="Email" value="<%= user.email %>"/>
+    <input type="number" name="idade" placeholder="Idade" value="<%= user.idade %>"/>
+    <input type="number" name="avatar" placeholder="Número do Avatar"/>
+    <button type="submit">Editar</button>
+  </form>
+</main>
+<%- include("./partials/footer") %>
