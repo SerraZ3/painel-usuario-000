@@ -7,11 +7,12 @@ const userController = require("../controllers/UserController");
 router.get("/create", userController.create);
 router.post("/", userController.store);
 
+
 router.get("/edit/:id", userController.edit);
 router.put("/:id", userController.update);
 
-router.delete("/:id", userController.delete);
-// router.delete("/:id", userController.destroy);
+router.get("/delete/:id", userController.delete);
+router.delete("/:id", userController.destroy);
 
 router.get("/:id", userController.show);
 router.get("/", userController.index);

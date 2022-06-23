@@ -142,13 +142,27 @@ const userController = {
     if (sobrenome) newUser.sobrenome = sobrenome;
     if (email) newUser.email = email;
     if (idade) newUser.idade = idade;
-    if (avatar) newUser.avatar = avatar;
+    if (avatar) newUser.avatar = "https://i.pravatar.cc/300?img=" + avatar;
     return res.render("success", {
       title: "Usuário atualizado",
       message: `Usuário ${newUser.nome} atualizado com sucesso`,
     });
   },
   delete: (req, res) => {
+    const { id } = req.params;
+    const userResult = users.find((user) => user.id === parseInt(id));
+    if (!userResult) {
+      return res.render("error", {
+        title: "Ops!",
+        message: "Nenhum usuário encontrado",
+      });
+    }
+    return res.render("user-delete", {
+      title: "Deletar usuário",
+      user: userResult,
+    });
+  },
+  destroy: (req, res) => {
     const { id } = req.params;
     const result = users.findIndex((user) => user.id === parseInt(id));
     if (result === -1) {
@@ -162,7 +176,6 @@ const userController = {
       message: `Usuário deletado com sucesso`,
     });
   },
-  // destroy: (req, res) => {},
 };
 
 module.exports = userController;
