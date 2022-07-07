@@ -6,12 +6,12 @@
   <h2 class="error-alert"><%= error.message %></h2>
   <% } %>
 
-  <form action="/user/<%=user.id%>?_method=put" method="post">
+    <form action="/user/<%=user.id%>?_method=put" method="post" enctype="multipart/form-data">
     <input type="text" name="nome" placeholder="Nome" value="<%= user.nome %>"/>
     <input type="text" name="sobrenome" placeholder="Sobrenome" value="<%= user.sobrenome %>"/>
     <input type="email" name="email" placeholder="Email" value="<%= user.email %>"/>
     <input type="number" name="idade" placeholder="Idade" value="<%= user.idade %>"/>
-    <input type="number" name="avatar" placeholder="Número do Avatar"/>
+       <input type="file" name="avatar" multiple />
     <button type="submit">Editar</button>
   </form>
 </main>

@@ -3,14 +3,14 @@
 <main id="user-create">
   <h1>Adicionar usuário</h1>
   <% if(locals.error){ %>
-    <h2 class="error-alert"><%= error.message %></h2>
+   <h2 class="error-alert"><%= error.message %></h2>
   <% } %>
-  <form action="/user" method="post" >
+  <form action="/user" method="post" enctype="multipart/form-data">
     <input type="text" name="nome" placeholder="Nome" />
     <input type="text" name="sobrenome" placeholder="Sobrenome" />
     <input type="email" name="email" placeholder="Email" />
     <input type="number" name="idade" placeholder="Idade" />
-    <input type="number" name="avatar" placeholder="Número do Avatar" />
+    <input type="file" name="avatar" multiple />
     <button type="submit">Adicionar</button>
   </form>
 </main>
